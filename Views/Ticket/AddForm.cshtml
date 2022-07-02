@@ -1,0 +1,129 @@
+﻿@using MyProject.DTOs.FlightDTOs
+@model FlightToListDTO;
+
+	<head>
+        <style>
+    .row .label{
+        color:black
+    }
+    .divBack {
+        background-color: #99c8e4;
+        border-radius:45px
+    }
+</style>
+    <link rel="stylesheet" href="~/contact-form-06/contact-form-06/css/style.css">
+
+	</head>
+	<body>
+		<div class="body">
+
+<section class="ftco-section">
+
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="wrapper">
+                    <div class="row no-gutters mb-5">
+                        <div class="col-md-7" style="float:left">
+                            <div class="contact-wrap w-100 p-md-5 p-4 divBack">
+                                <div id="form-message-warning" class="mb-4"></div>
+
+                                @using (Html.BeginForm("Add", "Ticket", FormMethod.Post))
+                                {
+                                    <div class="row">
+                                        <div hidden class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="name">FlightId</label>
+                                                <input value="@Model.FlightId" type="text" class="form-control" name="flightId" id="flightId" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="nameSurname">Name Surname</label>
+                                                <input type="text" class="form-control" name="nameSurname" id="nameSurname" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="fromCityName">From City Name</label>
+                                                <input readonly="readonly" value="@Model.FromCity.FCityName" type="text" class="form-control" name="fromCityName" id="fromCityName" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="toCityName">To City Name</label>
+                                                <input readonly="readonly" value="@Model.ToCity.TCityName" type="text" class="form-control" name="toCityName" id="toCityName" />
+                                            </div>
+                                        </div>
+                                       @* <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="caricount">Cari Count </label>
+                                                <input disabled asp-for="@Model.CariCount type=" text" class="form-control" name="caricount" id="caricount" />
+                                            </div>
+                                        </div>*@
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="caricount">Current Count </label>
+                                                <input readonly="readonly" asp-for="@Model.CariCount" type="number" class="form-control" name="caricount" id="caricount" />
+                                            </div>
+                                        </div>
+
+                                          <div class="col-md-12">
+                                            <div class="form-group">
+                                                 <label class="label" for="seatnumber" class="form-label">Seat Number</label><br>
+                                                     <select name="seatnumber">
+                                                         <option value="" selected disabled hidden>select seat</option>
+                                                         @foreach (var item in @Model.Seats)
+                                                        {
+                                                            <option value="@item">@item</option>
+                                                        }
+                                                     </select>
+                                             </div>
+                                        </div>
+
+                                         <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="time">Time </label>
+                                                <input readonly="readonly" asp-for="@Model.Time" class="form-control" name="time" id="time" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="price">Price (AZN)</label>
+                                                <input readonly="readonly" asp-for="@Model.Price" type="number" class="form-control" name="price" id="price" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" style="float:right;margin:8px 5px 0 0" value="Save" class="btn btn-success">
+                                                <div class="submitting"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div>
+                                <video style=" margin:-560px 0 0 750px;width:400px;height:400px;float:left" src="~/Sabina.mp4" autoplay="autoplay" style="width:100px;height:100px"></video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+
+
+		</div>
+
+	</body>

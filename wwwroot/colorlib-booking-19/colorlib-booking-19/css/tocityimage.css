@@ -1,0 +1,20 @@
+﻿.body {
+    height: auto;
+    margin-top: 150px;
+    padding: 0 90px;
+    width: 1300px;
+    margin: auto;
+}
+
+body {
+    background: url('../../../254381.webp') no-repeat center center fixed !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 150px 0 0 0;
+}
+
+.container{
+    margin-left:350px !important;
+}

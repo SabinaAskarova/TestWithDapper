@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MyProject.Models.FromCity>
+ 
+@{
+    ViewData["Title"] = "Index";
+}
+ 
+<h2>Index</h2>
+ 
+<p>
+    <a asp-action="Create" asp-controller="FromCity">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FCityId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FCityName)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Phone)*@
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Address)*@
+        </th>       
+        <th></th>
+    </tr>
+ 
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FCityId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FCityName)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Phone)*@
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Address)*@
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FCityId">Edit</a> |              
+                <a asp-action="Delete" asp-route-id="@item.FCityId" onclick="return confirm('Are sure wants to delete?');">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

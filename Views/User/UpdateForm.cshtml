@@ -1,0 +1,64 @@
+﻿@using MyProject.DTOs.UserDTOs
+
+@model UserToListDTO
+<head>
+   <link rel="stylesheet" href="~/css/updateuser.css">
+
+</head>
+<div class="body">
+
+    <div class="center">
+  <h1>Update User</h1>
+<form method="post" asp-controller="User" asp-action="Update">
+    <div hidden class="mb-3">
+        <label for="UserId" class="form-label">UserId</label>
+        <input asp-for="@Model.UserId" type="number" class="form-control" id="UserId">
+    </div>
+
+    <div class="inputbox">
+        <span>Username</span><br />
+        <input asp-for="@Model.UserName" type="text" class="form-control" id="UserName">
+        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div class="inputbox">
+        <span>Password</span><br />
+        <input asp-for="@Model.Password" type="text" class="form-control" id="Password">
+         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+      
+    </div>
+    <br />
+    <div class="inputbox">
+          <button type="submit" class="btn btn-primary" asp-controller="User" asp-action="Update">Submit</button>
+    </div>
+  </form>
+</div>
+
+</div>
+@*
+
+<form method="post" asp-controller="User" asp-action="Update">
+
+    <div hidden class="mb-3">
+        <label for="UserId" class="form-label">UserId</label>
+        <input asp-for="UserId" type="number" class="form-control" id="UserId">
+    </div>
+
+    <div class="mb-3">
+        <label for="UserName" class="form-label">UserName</label>
+        <input asp-for="UserName" type="text" class="form-control" id="UserName">
+    </div>
+
+    <div class="mb-3">
+        <label for="Password" class="form-label">Password</label>
+        <input asp-for="Password" type="text" class="form-control" id="Password">
+    </div>
+
+    <div hidden class="mb-3">
+        <label for="IsDeleted" class="form-label">IsDeleted</label>
+        <input asp-for="IsDeleted" type="text" class="form-control" id="IsDeleted">
+    </div>
+
+    <button type="submit" class="btn btn-primary" asp-controller="User" asp-action="Update">Submit</button>
+*@

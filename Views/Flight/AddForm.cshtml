@@ -1,0 +1,162 @@
+﻿@using MyProject.DTOs.FlightDTOs;
+
+@model FlightToListDTO
+<html>
+<head>
+    
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="~/colorlib-booking-5/css/bootstrap.min.css" />
+    
+    <link type="text/css" rel="stylesheet" href="~/colorlib-booking-5/css/update.css" />
+    <link rel="stylesheet" type="text/css" href="~/colorlib-booking-5/css/bootstrap.min.css">
+  
+</head>
+<body>
+    <div class="body">
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-form">
+                        <form method="post" asp-controller="Flight" asp-action="Add">
+                            <div class="form-group">
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Flying from</span>
+                                        @if (ViewBag.FromCities != null)
+                                        {@Html.DropDownListFor(m => m.FCityId, ViewBag.FromCities as IEnumerable<SelectListItem>,
+                                                                                                   "Choose City", new { @class = "form-control select-add-placeholder", required = "required" });
+                                    }
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Flyning to</span>
+                                        @if (ViewBag.ToCities != null)
+                                        {
+                            @Html.DropDownListFor(m => m.TCityId, ViewBag.ToCities as IEnumerable<SelectListItem>,
+                                              "Choose City", new { @class = "form-control select-add-placeholder", required = "required" });
+
+                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-left:110px">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <span class="form-label">Time</span>
+                                        <input asp-for="@Model.Time" class="form-control" type="date" required>
+                                @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                                <div hidden lass="mb-3">
+                                    <label for="flightid" class="form-label">flightid</label>
+                                    <input type="number" hiype="number" asp-for="FlightId" class="form-control" id="flightid">
+                                </div>
+
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <span class="form-label">Total Count</span>
+                                        <input asp-for="@Model.TotalCount" class="form-control" type="number" required>
+                                @Html.ValidationMessageFor(model => model.TotalCount, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <span class="form-label">Currrent Count</span>
+                                        <input asp-for="@Model.CariCount" class="form-control" type="number" required>
+                                @Html.ValidationMessageFor(model => model.CariCount, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <span class="form-label">Price</span>
+                                        <input asp-for="@Model.Price" class="form-control" type="number" required>
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <button style="float:right; margin-right:30px; margin-top:0" type="submit" class=" btn btn-primary">Save</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div  class="body">
+        <form method="post" asp-controller="Flight" asp-action="Add">
+            @if (ViewBag.FromCities != null)
+            {@Html.DropDownListFor(m => m.FCityId, ViewBag.FromCities as IEnumerable<SelectListItem>,
+                                                "Sheher Seç", new { @class = "form-control select-add-placeholder", required = "required" });
+        }
+            @if (ViewBag.ToCities != null)
+            {
+@Html.DropDownListFor(m => m.TCityId, ViewBag.ToCities as IEnumerable<SelectListItem>,
+    "Sheher Seç", new { @class = "form-control select-add-placeholder", required = "required" });
+
+}
+            <div hidden lass="mb-3">
+                <label for="flightid" class="form-label">flightid</label>
+                <input type="number" hiype="number" asp-for="FlightId" class="form-control" id="flightid">
+            </div>
+
+            <div class="mb-3">
+                <label for="Time" class="form-label">Time</label>
+                <input type="datetime" asp-for="Time" class="form-control" id="Time">
+            </div>
+
+            <div id="total" class="mb-3" hidden>
+                <label for="Totalcount" class="form-label">Totalcount  </label>
+                <input asp-for="TotalCount" type="number" class="form-control"  id="add_fields_placeholderValue">
+            </div>
+                  
+            <div class="mb-3">
+                <label for="Caricount" class="form-label">  Caricount</label>
+                <input asp-for="CariCount" type="number" class="form-control" id="Caricount">
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">
+                    price
+                </label>
+                <input asp-for="Price" type="number" class="form-control" id="price">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+*@   
